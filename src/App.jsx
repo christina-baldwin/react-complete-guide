@@ -123,7 +123,15 @@ function App() {
   return (
     <main>
       <div id="game-container">
-        PLAYERS
+        <div className="top-row">
+          <p>PLAYERS</p>
+          <p>
+            <button className="btn-restart" onClick={handleRematch}>
+              RESTART
+            </button>
+          </p>
+        </div>
+
         {/* {ol because the order matters} */}
         <ol id="players" className="highlight-player">
           <Player

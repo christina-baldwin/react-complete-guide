@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Player({
   initialName,
@@ -9,6 +9,13 @@ export default function Player({
   const [playerName, setPlayerName] = useState(initialName);
   // order is [value, function]
   const [isEditing, setIsEditing] = useState(false);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isEditing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
 
   function handleEditClick() {
     setIsEditing((editing) => !editing);
@@ -27,6 +34,7 @@ export default function Player({
       <span className="player">
         {isEditing ? (
           <input
+            ref={inputRef}
             type="text"
             required
             value={playerName}
