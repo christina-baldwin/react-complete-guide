@@ -1,13 +1,12 @@
-import AuthInputs from './components/AuthInputs.jsx';
-import Header from './components/Header.jsx';
+import Player from './components/Player.jsx';
 
-export default function App() {
+function App() {
   return (
     <>
-      <Header />
-      <main>
-        <AuthInputs />
-      </main>
+      <Player />
+      <div id="challenges"></div>
     </>
   );
 }
+
+export default App;
