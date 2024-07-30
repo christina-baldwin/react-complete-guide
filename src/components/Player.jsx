@@ -14,7 +14,7 @@ export default function Player() {
   function handleClick() {
     setEnteredPlayerName(playerName.current.value);
     // dont want to do the belwo becasue with react we want declarative code so code that allows react to do what we need instead of directly manipulating the DOM
-    // playerName.current.value = ""
+    playerName.current.value = "";
   }
 
   return (
