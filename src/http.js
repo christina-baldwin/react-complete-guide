@@ -10,6 +10,18 @@ export async function fetchAvailablePlaces() {
   return resData.places;
 }
 
+// fetching the stored places when the app loads
+export async function fetchUserPlaces() {
+  const response = await fetch("http://localhost:3000/user-places");
+  const resData = await response.json();
+  if (!response.ok) {
+    const error = new Error("Failed to fetch user places");
+    throw error;
+  }
+
+  return resData.places;
+}
+
 export async function updateUserPlaces(places) {
   const response = await fetch("http://localhost:3000/user-places", {
     method: "PUT",
