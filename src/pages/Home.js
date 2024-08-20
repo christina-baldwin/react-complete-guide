@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import MainNav from "../components/MainNav";
+//import MainNav from "../components/MainNav";
 
 function HomePage() {
   const navigate = useNavigate();
