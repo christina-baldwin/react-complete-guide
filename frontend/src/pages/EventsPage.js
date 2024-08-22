@@ -1,25 +1,46 @@
-import { Link } from "react-router-dom";
+//import { useEffect, useState } from "react";
 
-//hard coding but we usually get this from a backend
-const EVENTS = [
-  { id: "e1", title: "Event 1" },
-  { id: "e2", title: "Event 2" },
-  { id: "e3", title: "Event 3" },
-];
+import { useLoaderData } from "react-router-dom";
+
+import EventsList from "../components/EventsList";
 
 function EventsPage() {
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [fetchedEvents, setFetchedEvents] = useState();
+  // const [error, setError] = useState();
+
+  // useEffect(() => {
+  //   async function fetchEvents() {
+  //     setIsLoading(true);
+
+  //     setIsLoading(false);
+  //   }
+
+  //   fetchEvents();
+  // }, []);
+
+  const events = useLoaderData();
+
   return (
     <>
-      <h1>Events Page</h1>
-      <ul>
-        {EVENTS.map((event) => (
-          <li key={event.id}>
-            <Link to={event.id}>{event.title}</Link>
-          </li>
-        ))}
-      </ul>
+      {/* <div style={{ textAlign: "center" }}>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+      </div> */}
+      <EventsList events={events} />
     </>
   );
 }
 
 export default EventsPage;
+
+export async function loader() {
+  const response = await fetch("http://localhost:8080/events");
+
+  if (!response.ok) {
+    //..
+  } else {
+    const resData = await response.json();
+    return resData.events;
+  }
+}
