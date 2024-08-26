@@ -1,6 +1,6 @@
 //import { useEffect, useState } from "react";
 
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, json } from "react-router-dom";
 
 import EventsList from "../components/EventsList";
 
@@ -44,9 +44,13 @@ export async function loader() {
 
   if (!response.ok) {
     //return { isError: true, message: "Could not fetch events." };
-    throw new Response(JSON.stringify({ message: "Could not fetch events" }), {
-      status: 500,
-    });
+
+    // instead of this use json()
+    // throw new Response(JSON.stringify({ message: "Could not fetch events" }), {
+    //   status: 500,
+    // });
+
+    return json({ message: "Could not fetch events." }, { status: 500 });
   } else {
     // const resData = await response.json();
     // const res = new Response("any data", { status: 201 });
