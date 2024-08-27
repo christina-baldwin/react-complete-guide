@@ -1,11 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    }
-  ]
-}
+{"events":[{"title":"Another event","image":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fdaysofmunich.com%2Flifestyle%2Fcelebrate-summer-in-munich-your-guide-to-20-must-attend-events%2F&psig=AOvVaw2sLHF2wC8Rt6jEinC1BL7c&ust=1724861793684000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOCZ8IbJlYgDFQAAAAAdAAAAABAd","date":"2024-08-31","description":"Event.","id":"e7528105-3e61-4aa7-8518-cd75af0e683b"},{"title":"A new event","image":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mygermandmc.com%2Fdestinations%2Fdmc-germany-munich%2F&psig=AOvVaw2sLHF2wC8Rt6jEinC1BL7c&ust=1724861793684000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOCZ8IbJlYgDFQAAAAAdAAAAABAE","date":"2024-08-26","description":"Event","id":"0b1cf557-6f5c-4867-aa20-3dfa61f2ba7c"},{"id":"e1","title":"A dummy event","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}
