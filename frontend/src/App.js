@@ -25,13 +25,11 @@ import HomePage from "./pages/HomePage";
 import NewEventPage, { action as newEventAction } from "./pages/NewEventPage";
 import EventDetailPage, {
   loader as eventDetailLoader,
+  action as deleteEventAction,
 } from "./pages/EventDetailPage";
 import EditEventPage from "./pages/EditEventPage";
 import EventsPage from "./pages/EventsPage";
-import {
-  loader as eventsLoader,
-  action as deleteEventAction,
-} from "./pages/EventsPage";
+import { loader as eventsLoader } from "./pages/EventsPage";
 import RootLayout from "./pages/Root";
 import EventRootLayout from "./pages/EventsRoot";
 import ErrorPage from "./pages/Error";
