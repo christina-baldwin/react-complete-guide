@@ -7,13 +7,14 @@ function NewsletterSignup() {
   const { data, state } = fetcher;
 
   useEffect(() => {
-    // not executing
-    if (state === "idle" && data.message) {
+    // when not executing and submitted successfully
+    if (state === "idle" && data && data.message) {
       window.alert(data.message);
     }
   }, [data, state]);
 
   return (
+    // <div>hello</div>
     <fetcher.Form
       method="post"
       action="/newsletter"

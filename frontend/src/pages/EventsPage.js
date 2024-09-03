@@ -1,10 +1,11 @@
 //import { useEffect, useState } from "react";
 
-import { useLoaderData, json } from "react-router-dom";
-
+import { useLoaderData, json, defer, Await } from "react-router-dom";
 import EventsList from "../components/EventsList";
+import { Suspense } from "react";
 
 function EventsPage() {
+  // OLD CODE: NOTES
   // const [isLoading, setIsLoading] = useState(false);
   // const [fetchedEvents, setFetchedEvents] = useState();
   // const [error, setError] = useState();
@@ -19,27 +20,35 @@ function EventsPage() {
   //   fetchEvents();
   // }, []);
 
-  const data = useLoaderData();
-
   // if (data.isError) {
   //   return <p>{data.message}</p>;
   // }
-  const events = data.events;
+  // const events = data.events;
+
+  // return (
+  //   <>
+  //     {/* <div style={{ textAlign: "center" }}>
+  //       {isLoading && <p>Loading...</p>}
+  //       {error && <p>{error}</p>}
+  //     </div> */}
+  //     <EventsList events={events} />
+  //   </>
+  // );
+  const { events } = useLoaderData();
+  console.log("Events:", events);
 
   return (
-    <>
-      {/* <div style={{ textAlign: "center" }}>
-        {isLoading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-      </div> */}
-      <EventsList events={events} />
-    </>
+    <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
+      <Await resolve={events}>
+        {(loadedEvents) => <EventsList events={loadedEvents} />}
+      </Await>
+    </Suspense>
   );
 }
 
 export default EventsPage;
 
-export async function loader() {
+async function loadEvents() {
   const response = await fetch("http://localhost:8080/events");
 
   if (!response.ok) {
@@ -55,6 +64,13 @@ export async function loader() {
     // const resData = await response.json();
     // const res = new Response("any data", { status: 201 });
     // return res;
-    return response;
+    const resData = await response.json(); // Ensure you're parsing the JSON
+    return resData.events; // Return only the array of events
   }
+}
+
+export function loader() {
+  return defer({
+    events: loadEvents(),
+  });
 }
